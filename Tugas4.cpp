@@ -12,31 +12,21 @@ private:
 public:
     stack() { top = nullptr; }
 
-    void tambah(int nilai) {
-        node* nodeBaru = new node();
-        nodeBaru->data = nilai;
-        nodeBaru->next = top;
-        top = nodeBaru;
-        cout << nilai << " ditambahkan ke stack\n";
+    void push(int nilai) {
+        node* newNode = new node();
+        newNode->data = nilai;
+        newNode->next = top;
+        top = newNode;
     }
 
-    void hapus() {
+    void pop() {
         if (kosong()) {
-            cout << "stack kosong\n";
+            cout << "Data kosong\n";
             return;
         }
         node* temp = top;
-        cout << top->data << " dihapus dari stack\n";
         top = top->next;
         delete temp;
-    }
-
-    int lihat() {
-        if (kosong()) {
-            cout << "stack kosong\n";
-            return -1;
-        }
-        return top->data;
     }
 
     bool kosong() {
@@ -45,7 +35,7 @@ public:
 
     void tampilkan() {
         node* temp = top;
-        cout << "stack: ";
+        cout << "Data: ";
         while (temp != nullptr) {
             cout << temp->data << " ";
             temp = temp->next;
@@ -55,21 +45,40 @@ public:
 
     ~stack() {
         while (!kosong()) {
-            hapus();
+            pop();
         }
     }
 };
 
 int main() {
     stack t;
-    t.tambah(10);
-    t.tambah(20);
-    t.tambah(30);
-    t.tampilkan();
-    t.hapus();
-    t.tampilkan();
-    cout << "Elemen teratas
-    
-    : " << t.lihat() << endl;
+    int pilihan, nilai;
+    do {
+        cout << "\nMenu:\n";
+        cout << "1. Push\n";
+        cout << "2. Pop\n";
+        cout << "3. Tampilkan\n";
+        cout << "0. Keluar\n";
+        cout << "Pilih: ";
+        cin >> pilihan;
+        switch (pilihan) {
+            case 1:
+                cout << "Masukkan nilai: ";
+                cin >> nilai;
+                t.push(nilai);
+                break;
+            case 2:
+                t.pop();
+                break;
+            case 3:
+                t.tampilkan();
+                break;
+            case 0:
+                cout << "Keluar...\n";
+                break;
+            default:
+                cout << "Pilihan tidak valid\n";
+        }
+    } while (pilihan != 0);
     return 0;
 }
