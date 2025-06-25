@@ -68,6 +68,8 @@ int main() {
     t.tampilkan();
     t.hapus();
     t.tampilkan();
-    cout << "Elemen teratas: " << t.lihat() << endl;
+    cout << "Elemen teratas
+    
+    : " << t.lihat() << endl;
     return 0;
 }
