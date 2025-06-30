@@ -9,6 +9,8 @@ int main() {
     float bagi = 5;
     int diAtasRata = 0;
 
+    // Input 5 integers from the user
+
     cout << "Masukkan 5 bilangan integer: ";
     for (int i = 0; i < 5; i++) {
         cin >> angka[i];
